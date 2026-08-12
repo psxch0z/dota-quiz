@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Викторина торговца — Dota 2</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg-glow"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <button class="menu-link" id="menuBtn" hidden>← Меню</button>
+    <span class="brand-icon">⚔</span>
+    <span class="brand-title">Викторина торговца</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Счёт</span>
+      <span class="stat-value" id="score">0</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Лучший</span>
+      <span class="stat-value" id="best">0</span>
+    </div>
+  </div>
+  <div class="auth" id="auth">
+    <a class="btn btn-steam" id="steamLoginBtn" href="/auth/login">Войти через Steam</a>
+    <div class="user-chip" id="userChip" hidden>
+      <img id="userAvatar" class="user-avatar" src="" alt="">
+      <span id="userName" class="user-name"></span>
+      <button class="menu-link" id="logoutBtn">Выйти</button>
+    </div>
+  </div>
+</header>
+
+<section class="menu" id="menu" hidden>
+  <h1 class="menu-title">Викторина торговца</h1>
+  <p class="menu-about">Показываем собранный предмет из Dota 2 — угадай, из каких составляющих он сделан. Совсем как в старой мини-игре «The Shopkeeper's Quiz» из клиента игры.</p>
+  <p class="menu-subtitle">Выбери режим</p>
+  <div class="mode-list">
+    <button class="mode-card" data-mode="easy">
+      <div class="mode-name">Бесконечный</div>
+      <div class="mode-desc">Выбор из 9 компонентов</div>
+    </button>
+    <button class="mode-card" data-mode="hard">
+      <div class="mode-name">Бесконечный (Hard)</div>
+      <div class="mode-desc">Выбор из полного списка всех предметов игры</div>
+    </button>
+  </div>
+
+  <div class="leaderboard-toggle">
+    <button class="btn btn-ghost" id="leaderboardBtn">🏆 Лидерборд</button>
+  </div>
+
+  <div class="leaderboard-panel" id="leaderboardPanel" hidden>
+    <div class="lb-tabs" id="lbTabs">
+      <button class="lb-tab active" data-mode="easy">Бесконечный</button>
+      <button class="lb-tab" data-mode="hard">Hard</button>
+    </div>
+    <ol class="lb-list" id="lbList"></ol>
+  </div>
+</section>
+
+<main class="game" id="game" hidden>
+
+  <section class="target-card" id="targetCard">
+    <div class="target-img-wrap">
+      <img id="targetImg" class="target-img" src="" alt="">
+    </div>
+    <div class="target-info">
+      <div class="target-name" id="targetName">Загрузка...</div>
+      <div class="target-cost" id="targetCost"></div>
+    </div>
+  </section>
+
+  <section class="tray-section">
+    <div class="tray-label">Твой рецепт</div>
+    <div class="tray" id="tray">
+      <div class="tray-empty" id="trayEmpty">Выбери составляющие ниже</div>
+    </div>
+    <div class="tray-actions">
+      <button class="btn btn-ghost" id="clearBtn">Очистить</button>
+      <button class="btn btn-primary" id="checkBtn">Проверить</button>
+      <button class="btn btn-secondary" id="nextBtn" hidden>Дальше →</button>
+    </div>
+    <div class="feedback" id="feedback"></div>
+  </section>
+
+  <section class="pool-section">
+    <input type="text" id="search" class="search" placeholder="Поиск предмета...">
+    <div class="pool-row">
+      <div class="pool-grid" id="poolGrid"></div>
+      <button class="pool-item recipe-btn" id="recipeBtn" hidden></button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  Данные о предметах: OpenDota dotaconstants · Иконки: Valve / Steam CDN
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

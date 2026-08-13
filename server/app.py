@@ -119,4 +119,8 @@ def api_leaderboard():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8420))
-    app.run(host="0.0.0.0", port=port, debug=True)
+    # debug=False: во flask-режиме отладки (PIN интерактивного дебаггера,
+    # автоперезагрузчик) иногда намертво зависает при запуске из фонового
+    # процесса на Windows и порт вообще не открывается. Для реальной
+    # отладки трейсбек всё равно виден в консоли/логах — debug тут не нужен.
+    app.run(host="0.0.0.0", port=port, debug=False)

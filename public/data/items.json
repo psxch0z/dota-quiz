@@ -20,6 +20,22 @@
      "key": "blight_stone",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "chainmail",
+      "count": 1
+     },
+     {
+      "key": "sobi_mask",
+      "count": 1
+     },
+     {
+      "key": "blight_stone",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -38,6 +54,18 @@
      "key": "ward_observer",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "ward_sentry",
+      "count": 1
+     },
+     {
+      "key": "ward_observer",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -60,6 +88,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "magic_stick",
+      "count": 1
+     },
+     {
+      "key": "branches",
+      "count": 2
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -82,6 +126,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "circlet",
+      "count": 1
+     },
+     {
+      "key": "gauntlets",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -104,6 +164,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "circlet",
+      "count": 1
+     },
+     {
+      "key": "slippers",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -126,6 +202,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "circlet",
+      "count": 1
+     },
+     {
+      "key": "mantle",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -148,6 +240,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "ring_of_protection",
+      "count": 1
+     },
+     {
+      "key": "gauntlets",
+      "count": 2
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -174,6 +282,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "sobi_mask",
+      "count": 1
+     },
+     {
+      "key": "ring_of_protection",
+      "count": 1
+     },
+     {
+      "key": "circlet",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -196,6 +324,22 @@
      "key": "ring_of_regen",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "boots",
+      "count": 1
+     },
+     {
+      "key": "wind_lace",
+      "count": 1
+     },
+     {
+      "key": "ring_of_regen",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -218,6 +362,22 @@
      "key": "blight_stone",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "boots_of_elves",
+      "count": 1
+     },
+     {
+      "key": "orb_of_frost",
+      "count": 1
+     },
+     {
+      "key": "blight_stone",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -244,6 +404,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "blades_of_attack",
+      "count": 1
+     },
+     {
+      "key": "fluffy_hat",
+      "count": 1
+     },
+     {
+      "key": "sobi_mask",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -270,6 +450,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "wizard_hat",
+      "count": 1
+     },
+     {
+      "key": "fluffy_hat",
+      "count": 1
+     },
+     {
+      "key": "ring_of_protection",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -292,6 +492,50 @@
      "key": "belt_of_strength",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "boots",
+      "count": 1
+     },
+     {
+      "key": "gloves",
+      "count": 1
+     },
+     {
+      "key": "belt_of_strength",
+      "count": 1
+     }
+    ],
+    [
+     {
+      "key": "boots",
+      "count": 1
+     },
+     {
+      "key": "gloves",
+      "count": 1
+     },
+     {
+      "key": "boots_of_elves",
+      "count": 1
+     }
+    ],
+    [
+     {
+      "key": "boots",
+      "count": 1
+     },
+     {
+      "key": "gloves",
+      "count": 1
+     },
+     {
+      "key": "robe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -310,6 +554,18 @@
      "key": "void_stone",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "ring_of_health",
+      "count": 1
+     },
+     {
+      "key": "void_stone",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -332,6 +588,22 @@
      "key": "blades_of_attack",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "boots",
+      "count": 1
+     },
+     {
+      "key": "chainmail",
+      "count": 1
+     },
+     {
+      "key": "blades_of_attack",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -358,6 +630,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "boots",
+      "count": 1
+     },
+     {
+      "key": "ring_of_basilius",
+      "count": 1
+     },
+     {
+      "key": "wizard_hat",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -380,6 +672,22 @@
      "key": "sobi_mask",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "blitz_knuckles",
+      "count": 1
+     },
+     {
+      "key": "robe",
+      "count": 1
+     },
+     {
+      "key": "sobi_mask",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -406,6 +714,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "headdress",
+      "count": 1
+     },
+     {
+      "key": "belt_of_strength",
+      "count": 1
+     },
+     {
+      "key": "wind_lace",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -424,6 +752,18 @@
      "key": "ring_of_health",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "vitality_booster",
+      "count": 1
+     },
+     {
+      "key": "ring_of_health",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -450,6 +790,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "voodoo_mask",
+      "count": 1
+     },
+     {
+      "key": "robe",
+      "count": 1
+     },
+     {
+      "key": "fluffy_hat",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -472,6 +832,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "headdress",
+      "count": 1
+     },
+     {
+      "key": "chainmail",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -498,6 +874,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "urn_of_shadows",
+      "count": 1
+     },
+     {
+      "key": "chainmail",
+      "count": 1
+     },
+     {
+      "key": "wizard_hat",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -520,6 +916,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "blade_of_alacrity",
+      "count": 1
+     },
+     {
+      "key": "belt_of_strength",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -538,6 +950,18 @@
      "key": "lifesteal",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "broadsword",
+      "count": 1
+     },
+     {
+      "key": "lifesteal",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -560,6 +984,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "claymore",
+      "count": 1
+     },
+     {
+      "key": "blades_of_attack",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -582,6 +1022,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "sobi_mask",
+      "count": 2
+     },
+     {
+      "key": "belt_of_strength",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -604,6 +1060,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "staff_of_wizardry",
+      "count": 1
+     },
+     {
+      "key": "robe",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -626,6 +1098,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "ogre_axe",
+      "count": 1
+     },
+     {
+      "key": "belt_of_strength",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -648,6 +1136,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "blade_of_alacrity",
+      "count": 1
+     },
+     {
+      "key": "boots_of_elves",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -670,6 +1174,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "shadow_amulet",
+      "count": 1
+     },
+     {
+      "key": "shawl",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -696,6 +1216,26 @@
      "key": "blades_of_attack",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "buckler",
+      "count": 1
+     },
+     {
+      "key": "ring_of_basilius",
+      "count": 1
+     },
+     {
+      "key": "lifesteal",
+      "count": 1
+     },
+     {
+      "key": "blades_of_attack",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -718,6 +1258,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "staff_of_wizardry",
+      "count": 1
+     },
+     {
+      "key": "fluffy_hat",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -740,6 +1296,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "magic_wand",
+      "count": 1
+     },
+     {
+      "key": "crown",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -762,6 +1334,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "staff_of_wizardry",
+      "count": 1
+     },
+     {
+      "key": "vitality_booster",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -784,6 +1372,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "energy_booster",
+      "count": 1
+     },
+     {
+      "key": "void_stone",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -806,6 +1410,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "broadsword",
+      "count": 1
+     },
+     {
+      "key": "splintmail",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -832,6 +1452,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "helm_of_iron_will",
+      "count": 1
+     },
+     {
+      "key": "gloves",
+      "count": 1
+     },
+     {
+      "key": "blades_of_attack",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -854,6 +1494,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "blade_of_alacrity",
+      "count": 1
+     },
+     {
+      "key": "robe",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -876,6 +1532,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "helm_of_iron_will",
+      "count": 1
+     },
+     {
+      "key": "crown",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -898,6 +1570,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "blade_of_alacrity",
+      "count": 1
+     },
+     {
+      "key": "broadsword",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -924,6 +1612,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "pavise",
+      "count": 1
+     },
+     {
+      "key": "chainmail",
+      "count": 1
+     },
+     {
+      "key": "wind_lace",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -946,6 +1654,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "pers",
+      "count": 1
+     },
+     {
+      "key": "diadem",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -972,6 +1696,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "staff_of_wizardry",
+      "count": 1
+     },
+     {
+      "key": "void_stone",
+      "count": 1
+     },
+     {
+      "key": "wind_lace",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -998,6 +1742,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "vitality_booster",
+      "count": 1
+     },
+     {
+      "key": "shawl",
+      "count": 1
+     },
+     {
+      "key": "crown",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1020,6 +1784,22 @@
      "key": "void_stone",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "ogre_axe",
+      "count": 1
+     },
+     {
+      "key": "broadsword",
+      "count": 1
+     },
+     {
+      "key": "void_stone",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1042,6 +1822,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "urn_of_shadows",
+      "count": 1
+     },
+     {
+      "key": "diadem",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1068,6 +1864,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "oblivion_staff",
+      "count": 1
+     },
+     {
+      "key": "chainmail",
+      "count": 1
+     },
+     {
+      "key": "orb_of_venom",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1090,6 +1906,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "kaya",
+      "count": 1
+     },
+     {
+      "key": "crown",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1112,6 +1944,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "mithril_hammer",
+      "count": 1
+     },
+     {
+      "key": "belt_of_strength",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1134,6 +1982,22 @@
      "key": "gloves",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "mithril_hammer",
+      "count": 1
+     },
+     {
+      "key": "javelin",
+      "count": 1
+     },
+     {
+      "key": "gloves",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1156,6 +2020,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "vitality_booster",
+      "count": 1
+     },
+     {
+      "key": "energy_booster",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1178,6 +2058,22 @@
      "key": "energy_booster",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "point_booster",
+      "count": 1
+     },
+     {
+      "key": "vitality_booster",
+      "count": 1
+     },
+     {
+      "key": "energy_booster",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1204,6 +2100,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "point_booster",
+      "count": 1
+     },
+     {
+      "key": "crown",
+      "count": 1
+     },
+     {
+      "key": "wizard_hat",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1230,6 +2146,26 @@
      "key": "orb_of_venom",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "pers",
+      "count": 1
+     },
+     {
+      "key": "cloak",
+      "count": 1
+     },
+     {
+      "key": "blades_of_attack",
+      "count": 1
+     },
+     {
+      "key": "orb_of_venom",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1252,6 +2188,22 @@
      "key": "shadow_amulet",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "claymore",
+      "count": 1
+     },
+     {
+      "key": "blitz_knuckles",
+      "count": 1
+     },
+     {
+      "key": "shadow_amulet",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1274,6 +2226,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "oblivion_staff",
+      "count": 1
+     },
+     {
+      "key": "claymore",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1296,6 +2264,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "lesser_crit",
+      "count": 1
+     },
+     {
+      "key": "voodoo_mask",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1322,6 +2306,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "talisman_of_evasion",
+      "count": 1
+     },
+     {
+      "key": "splintmail",
+      "count": 1
+     },
+     {
+      "key": "ring_of_health",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1340,6 +2344,18 @@
      "key": "blight_stone",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "mithril_hammer",
+      "count": 2
+     },
+     {
+      "key": "blight_stone",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1366,6 +2382,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "ring_of_tarrasque",
+      "count": 1
+     },
+     {
+      "key": "cloak",
+      "count": 1
+     },
+     {
+      "key": "shawl",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1388,6 +2424,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "vanguard",
+      "count": 1
+     },
+     {
+      "key": "helm_of_iron_will",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1410,6 +2462,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "vladmir",
+      "count": 1
+     },
+     {
+      "key": "point_booster",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1436,6 +2504,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "pers",
+      "count": 1
+     },
+     {
+      "key": "platemail",
+      "count": 1
+     },
+     {
+      "key": "energy_booster",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1462,6 +2550,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "cloak",
+      "count": 1
+     },
+     {
+      "key": "ogre_axe",
+      "count": 1
+     },
+     {
+      "key": "vitality_booster",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1488,6 +2596,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "pers",
+      "count": 1
+     },
+     {
+      "key": "broadsword",
+      "count": 2
+     },
+     {
+      "key": "quelling_blade",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1510,6 +2638,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "mithril_hammer",
+      "count": 1
+     },
+     {
+      "key": "ogre_axe",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1536,6 +2680,26 @@
      "key": "blade_of_alacrity",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "point_booster",
+      "count": 1
+     },
+     {
+      "key": "staff_of_wizardry",
+      "count": 1
+     },
+     {
+      "key": "ogre_axe",
+      "count": 1
+     },
+     {
+      "key": "blade_of_alacrity",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1554,6 +2718,18 @@
      "key": "yasha",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "sange",
+      "count": 1
+     },
+     {
+      "key": "yasha",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1572,6 +2748,18 @@
      "key": "sange",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "kaya",
+      "count": 1
+     },
+     {
+      "key": "sange",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1590,6 +2778,18 @@
      "key": "kaya",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "yasha",
+      "count": 1
+     },
+     {
+      "key": "kaya",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1612,6 +2812,22 @@
      "key": "ring_of_tarrasque",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "tranquil_boots",
+      "count": 1
+     },
+     {
+      "key": "ancient_janggo",
+      "count": 1
+     },
+     {
+      "key": "ring_of_tarrasque",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1630,6 +2846,18 @@
      "key": "splintmail",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "relic",
+      "count": 1
+     },
+     {
+      "key": "splintmail",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1652,6 +2880,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "force_staff",
+      "count": 1
+     },
+     {
+      "key": "dragon_lance",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1674,6 +2918,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "arcane_boots",
+      "count": 1
+     },
+     {
+      "key": "mekansm",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1700,6 +2960,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "platemail",
+      "count": 1
+     },
+     {
+      "key": "splintmail",
+      "count": 1
+     },
+     {
+      "key": "chasm_stone",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1722,6 +3002,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "yasha",
+      "count": 1
+     },
+     {
+      "key": "diadem",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1748,6 +3044,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "rod_of_atos",
+      "count": 1
+     },
+     {
+      "key": "point_booster",
+      "count": 1
+     },
+     {
+      "key": "chasm_stone",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1766,6 +3082,18 @@
      "key": "soul_booster",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "veil_of_discord",
+      "count": 1
+     },
+     {
+      "key": "soul_booster",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1784,6 +3112,18 @@
      "key": "talisman_of_evasion",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "relic",
+      "count": 1
+     },
+     {
+      "key": "talisman_of_evasion",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1806,6 +3146,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "echo_sabre",
+      "count": 1
+     },
+     {
+      "key": "diadem",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1828,6 +3184,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "pers",
+      "count": 1
+     },
+     {
+      "key": "ultimate_orb",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1850,6 +3222,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "ghost",
+      "count": 1
+     },
+     {
+      "key": "soul_booster",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1872,6 +3260,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "soul_booster",
+      "count": 1
+     },
+     {
+      "key": "tiara_of_selemene",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1894,6 +3298,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "ring_of_tarrasque",
+      "count": 1
+     },
+     {
+      "key": "tiara_of_selemene",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1920,6 +3340,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "demon_edge",
+      "count": 1
+     },
+     {
+      "key": "blitz_knuckles",
+      "count": 1
+     },
+     {
+      "key": "javelin",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1942,6 +3382,22 @@
      "key": "lifesteal",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "reaver",
+      "count": 1
+     },
+     {
+      "key": "claymore",
+      "count": 1
+     },
+     {
+      "key": "lifesteal",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1964,6 +3420,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "reaver",
+      "count": 1
+     },
+     {
+      "key": "ring_of_tarrasque",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -1986,6 +3458,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "lesser_crit",
+      "count": 1
+     },
+     {
+      "key": "demon_edge",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2012,6 +3500,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "buckler",
+      "count": 1
+     },
+     {
+      "key": "hyperstone",
+      "count": 1
+     },
+     {
+      "key": "platemail",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2034,6 +3542,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "mystic_staff",
+      "count": 1
+     },
+     {
+      "key": "tiara_of_selemene",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2056,6 +3580,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "ultimate_orb",
+      "count": 1
+     },
+     {
+      "key": "ghost",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2078,6 +3618,22 @@
      "key": "talisman_of_evasion",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "eagle",
+      "count": 1
+     },
+     {
+      "key": "claymore",
+      "count": 1
+     },
+     {
+      "key": "talisman_of_evasion",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2100,6 +3656,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "maelstrom",
+      "count": 1
+     },
+     {
+      "key": "hyperstone",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2118,6 +3690,18 @@
      "key": "soul_booster",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "phylactery",
+      "count": 1
+     },
+     {
+      "key": "soul_booster",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2136,6 +3720,18 @@
      "key": "demon_edge",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "relic",
+      "count": 1
+     },
+     {
+      "key": "demon_edge",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2158,6 +3754,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "helm_of_the_dominator",
+      "count": 1
+     },
+     {
+      "key": "ultimate_orb",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2180,6 +3792,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "invis_sword",
+      "count": 1
+     },
+     {
+      "key": "demon_edge",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2198,6 +3826,18 @@
      "key": "orb_of_frost",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "ultimate_orb",
+      "count": 2
+     },
+     {
+      "key": "orb_of_frost",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2224,6 +3864,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "specialists_array",
+      "count": 1
+     },
+     {
+      "key": "dragon_lance",
+      "count": 1
+     },
+     {
+      "key": "orb_of_venom",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2246,6 +3906,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "witch_blade",
+      "count": 1
+     },
+     {
+      "key": "mystic_staff",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2268,6 +3944,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "diffusal_blade",
+      "count": 1
+     },
+     {
+      "key": "eagle",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2290,6 +3982,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "basher",
+      "count": 1
+     },
+     {
+      "key": "sange",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2316,6 +4024,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "kaya",
+      "count": 1
+     },
+     {
+      "key": "sange",
+      "count": 1
+     },
+     {
+      "key": "yasha",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2342,6 +4070,26 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "orchid",
+      "count": 1
+     },
+     {
+      "key": "oblivion_staff",
+      "count": 1
+     },
+     {
+      "key": "javelin",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2364,6 +4112,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "blink",
+      "count": 1
+     },
+     {
+      "key": "reaver",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2386,6 +4150,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "blink",
+      "count": 1
+     },
+     {
+      "key": "eagle",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2408,6 +4188,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "blink",
+      "count": 1
+     },
+     {
+      "key": "mystic_staff",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   },
   {
@@ -2430,6 +4226,22 @@
      "key": "recipe",
      "count": 1
     }
+   ],
+   "answers": [
+    [
+     {
+      "key": "cyclone",
+      "count": 1
+     },
+     {
+      "key": "mystic_staff",
+      "count": 1
+     },
+     {
+      "key": "recipe",
+      "count": 1
+     }
+    ]
    ]
   }
  ],

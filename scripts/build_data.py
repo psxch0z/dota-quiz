@@ -40,6 +40,22 @@ RECIPE_IMG = "/apps/dota2/images/dota_react/items/recipe.png"
 #   удалён из игры в патче 7.39 (2025-05-21) — актуального рецепта не существует.
 EXCLUDED_KEYS = {"iron_talon"}
 
+# Некоторые предметы в игре собираются НЕСКОЛЬКИМИ равноценными способами
+# (обычно — выбор статового компонента: сила/ловкость/интеллект). Здесь
+# перечислены материальные компоненты альтернативных вариантов сборки —
+# ключ рецепта -> список альтернативных наборов (каждый набор заменяет
+# собой основной, вычисленный из dotaconstants, а не дополняет его).
+# Рецепт (свиток), если он нужен основному варианту, добавляется ко всем
+# альтернативам автоматически.
+MANUAL_ALT_RECIPES = {
+    # Power Treads: Boots of Speed + Gloves of Haste + [Belt of Strength /
+    # Band of Elvenskin / Robe of the Magi] в зависимости от атрибута.
+    "power_treads": [
+        [("boots", 1), ("gloves", 1), ("boots_of_elves", 1)],
+        [("boots", 1), ("gloves", 1), ("robe", 1)],
+    ],
+}
+
 
 def load_raw():
     with open(RAW_PATH, encoding="utf-8") as f:
@@ -132,6 +148,15 @@ def main():
         if recipe_needed:
             entry["components"].append({"key": RECIPE_KEY, "count": 1})
             uses_recipe = True
+
+        answer_variants = [entry["components"]]
+        for alt in MANUAL_ALT_RECIPES.get(key, []):
+            alt_components = [{"key": c, "count": n} for c, n in alt]
+            if recipe_needed:
+                alt_components.append({"key": RECIPE_KEY, "count": 1})
+            answer_variants.append(alt_components)
+            pool_keys.update(c for c, _ in alt)
+        entry["answers"] = answer_variants
 
         recipes.append(entry)
         pool_keys.update(materials.keys())

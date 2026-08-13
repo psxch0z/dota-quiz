@@ -15,6 +15,7 @@
     targetCost: document.getElementById("targetCost"),
     tray: document.getElementById("tray"),
     trayEmpty: document.getElementById("trayEmpty"),
+    trayWarning: document.getElementById("trayWarning"),
     poolGrid: document.getElementById("poolGrid"),
     search: document.getElementById("search"),
     recipeBtn: document.getElementById("recipeBtn"),
@@ -73,16 +74,46 @@
     state.remaining = shuffle(state.recipes);
   }
 
+  function answerVariants(recipe) {
+    return recipe.answers && recipe.answers.length ? recipe.answers : [recipe.components];
+  }
+
+  // Если разным вариантам рецепта нужно разное количество одного и того же
+  // компонента, берём максимум — этого хватит на выбор любого варианта.
+  function maxAnswerCounts(recipe) {
+    const counts = new Map();
+    for (const variant of answerVariants(recipe)) {
+      for (const c of variant) {
+        if (c.key === RECIPE_KEY) continue;
+        if (c.count > (counts.get(c.key) || 0)) counts.set(c.key, c.count);
+      }
+    }
+    return counts;
+  }
+
   function buildEasyOptions(recipe) {
-    const realKeys = Array.from(
-      new Set(recipe.components.filter((c) => c.key !== RECIPE_KEY).map((c) => c.key))
-    );
+    const maxCounts = maxAnswerCounts(recipe);
+    // Повторяющийся компонент показываем отдельной иконкой на каждую копию
+    // (а не одной иконкой со счётчиком) — как было в оригинальной игре.
+    const realSlots = [];
+    for (const [key, count] of maxCounts.entries()) {
+      for (let i = 0; i < count; i++) realSlots.push(key);
+    }
     const decoyPool = state.pool.filter(
-      (p) => p.key !== RECIPE_KEY && p.key !== recipe.key && !realKeys.includes(p.key)
+      (p) => p.key !== RECIPE_KEY && p.key !== recipe.key && !maxCounts.has(p.key)
     );
-    const decoysNeeded = Math.max(0, EASY_SLOT_COUNT - realKeys.length);
+    const decoysNeeded = Math.max(0, EASY_SLOT_COUNT - realSlots.length);
     const decoys = shuffle(decoyPool).slice(0, decoysNeeded);
-    return shuffle([...realKeys, ...decoys.map((p) => p.key)]);
+    return shuffle([...realSlots, ...decoys.map((p) => p.key)]);
+  }
+
+  function slotOccurrenceIndices(keys) {
+    const seen = new Map();
+    return keys.map((k) => {
+      const idx = seen.get(k) || 0;
+      seen.set(k, idx + 1);
+      return idx;
+    });
   }
 
   function saveSession() {
@@ -163,13 +194,59 @@
     saveSession();
   }
 
+  function shakeElement(el) {
+    el.classList.remove("shake");
+    void el.offsetWidth; // форсируем reflow, чтобы анимация перезапустилась
+    el.classList.add("shake");
+    el.addEventListener("animationend", () => el.classList.remove("shake"), { once: true });
+  }
+
+  let warningTimer = null;
+  function showWarning(text) {
+    els.trayWarning.textContent = text;
+    els.trayWarning.hidden = false;
+    clearTimeout(warningTimer);
+    warningTimer = setTimeout(() => {
+      els.trayWarning.hidden = true;
+    }, 1600);
+  }
+
+  function totalSelectedCount() {
+    let total = 0;
+    for (const n of state.selected.values()) total += n;
+    return total;
+  }
+
+  function handlePoolItemClick(item, div, occurrencesInList) {
+    if (state.locked) return;
+    const c = state.selected.get(item.key) || 0;
+    if (c >= occurrencesInList) {
+      shakeElement(div);
+      return;
+    }
+    if (state.mode === "easy" && totalSelectedCount() >= requiredSlotCount(state.current)) {
+      shakeElement(div);
+      showWarning("Уже выбрано столько компонентов, сколько нужно — сначала убери лишний");
+      return;
+    }
+    state.selected.set(item.key, c + 1);
+    renderPool();
+    renderTray();
+    saveSession();
+  }
+
   function renderPool() {
     els.poolGrid.innerHTML = "";
 
+    const isEasy = state.mode === "easy";
+
     let items;
-    if (state.mode === "easy") {
+    if (isEasy) {
       items = state.easyOptions.map((k) => poolByKey(k)).filter(Boolean);
     } else {
+      // В общем списке — ровно одна иконка на предмет (как обычный поиск).
+      // Несколько одинаковых компонентов добавляются повторным кликом по
+      // ней же и превращаются в отдельные фишки только в блоке "Твой рецепт".
       const q = els.search.value.trim().toLowerCase();
       items = state.pool.filter((p) => {
         if (p.name.toLowerCase().includes(q)) return true;
@@ -177,26 +254,28 @@
       });
     }
 
-    for (const item of items) {
+    const occurrenceIndices = slotOccurrenceIndices(items.map((it) => it.key));
+
+    items.forEach((item, idx) => {
       const div = document.createElement("div");
       div.className = "pool-item";
+      div.title = item.name;
       const count = state.selected.get(item.key) || 0;
-      if (count > 0) div.classList.add("selected");
-      div.innerHTML = `
-        <img src="${item.img}" alt="${item.name}" loading="lazy">
-        <span class="tooltip">${item.name}</span>
-        ${count > 0 ? `<span class="badge">${count}</span>` : ""}
-      `;
-      div.addEventListener("click", () => {
-        if (state.locked) return;
-        const c = state.selected.get(item.key) || 0;
-        state.selected.set(item.key, c + 1);
-        renderPool();
-        renderTray();
-        saveSession();
-      });
+      const filled = occurrenceIndices[idx] < count;
+      if (filled) div.classList.add("selected");
+      div.innerHTML = `<img src="${item.img}" alt="${item.name}" loading="lazy">`;
+
+      // Сколько раз можно кликнуть этот предмет: в лёгком режиме — по числу
+      // слотов под него в строке. В хард-режиме лимита нет вообще — иначе
+      // сам факт "блокировки после N кликов" был бы подсказкой о том,
+      // сколько именно единиц компонента нужно в рецепте.
+      const clickLimit = isEasy
+        ? state.easyOptions.filter((k) => k === item.key).length
+        : Infinity;
+
+      div.addEventListener("click", () => handlePoolItemClick(item, div, clickLimit));
       els.poolGrid.appendChild(div);
-    }
+    });
 
     renderRecipeBtn();
   }
@@ -212,61 +291,153 @@
       return;
     }
     els.recipeBtn.hidden = false;
+    els.recipeBtn.title = item.name;
     const count = state.selected.get(RECIPE_KEY) || 0;
     els.recipeBtn.classList.toggle("selected", count > 0);
-    els.recipeBtn.innerHTML = `
-      <img src="${item.img}" alt="${item.name}" loading="lazy">
-      <span class="tooltip">${item.name}</span>
-      ${count > 0 ? `<span class="badge">${count}</span>` : ""}
+    els.recipeBtn.innerHTML = `<img src="${item.img}" alt="${item.name}" loading="lazy">`;
+  }
+
+  function makeTrayChip(item, key) {
+    const div = document.createElement("div");
+    div.className = "tray-chip";
+    div.innerHTML = `
+      <img src="${item.img}" alt="${item.name}">
+      <span class="remove-hint">✕</span>
     `;
+    div.dataset.key = key;
+    div.title = item.name;
+    div.addEventListener("click", () => {
+      if (state.locked) return;
+      const c = state.selected.get(key) || 0;
+      if (c <= 1) state.selected.delete(key);
+      else state.selected.set(key, c - 1);
+      renderPool();
+      renderTray();
+      saveSession();
+    });
+    return div;
+  }
+
+  function requiredSlotCount(recipe) {
+    const variant = answerVariants(recipe)[0];
+    return variant.reduce((sum, c) => sum + c.count, 0);
+  }
+
+  function makePlaceholderSlot() {
+    const div = document.createElement("div");
+    div.className = "tray-chip tray-placeholder";
+    div.textContent = "?";
+    return div;
   }
 
   function renderTray() {
     els.tray.innerHTML = "";
+    const isEasy = state.mode === "easy";
+
+    if (isEasy && state.current) {
+      // Как в оригинальной игре: сразу видно, сколько всего компонентов
+      // нужно (пустые "?"), они заполняются по мере выбора.
+      let filled = 0;
+      for (const [key, count] of state.selected.entries()) {
+        const item = poolByKey(key);
+        if (!item) continue;
+        for (let i = 0; i < count; i++) {
+          els.tray.appendChild(makeTrayChip(item, key));
+          filled++;
+        }
+      }
+      const remaining = Math.max(0, requiredSlotCount(state.current) - filled);
+      for (let i = 0; i < remaining; i++) {
+        els.tray.appendChild(makePlaceholderSlot());
+      }
+      return;
+    }
+
     if (state.selected.size === 0) {
       els.tray.appendChild(els.trayEmpty);
       return;
     }
+    // Дубликат — это отдельная фишка на каждую единицу, без бейджа-счётчика.
     for (const [key, count] of state.selected.entries()) {
       const item = poolByKey(key);
       if (!item) continue;
-      const div = document.createElement("div");
-      div.className = "tray-chip";
-      div.innerHTML = `
-        <img src="${item.img}" alt="${item.name}">
-        <span class="remove-hint">✕</span>
-        ${count > 1 ? `<span class="count">${count}</span>` : ""}
-      `;
-      div.dataset.key = key;
-      div.title = item.name;
-      div.addEventListener("click", () => {
-        if (state.locked) return;
-        const c = state.selected.get(key) || 0;
-        if (c <= 1) state.selected.delete(key);
-        else state.selected.set(key, c - 1);
-        renderPool();
-        renderTray();
-        saveSession();
-      });
-      els.tray.appendChild(div);
+      for (let i = 0; i < count; i++) {
+        els.tray.appendChild(makeTrayChip(item, key));
+      }
     }
+  }
+
+  function variantMatchesSelection(variant, selected) {
+    const need = new Map(variant.map((c) => [c.key, c.count]));
+    if (need.size !== selected.size) return false;
+    for (const [k, n] of need.entries()) {
+      if (selected.get(k) !== n) return false;
+    }
+    return true;
+  }
+
+  function componentName(c) {
+    const it = poolByKey(c.key);
+    const name = it ? it.name : c.key;
+    return c.count > 1 ? `${name} x${c.count}` : name;
+  }
+
+  // Описывает все варианты рецепта одной строкой: общие для всех вариантов
+  // компоненты — через запятую, а то, чем варианты отличаются друг от друга
+  // (обычно один статовый компонент) — через "/". Например для Power Treads:
+  // "Boots of Speed, Gloves of Haste, Belt of Strength/Band of Elvenskin/Robe of the Magi".
+  function describeVariants(variants) {
+    const common = variants[0].filter((c) =>
+      variants.every((v) => v.some((vc) => vc.key === c.key && vc.count === c.count))
+    );
+    const commonKeys = new Set(common.map((c) => c.key));
+    const diffTexts = Array.from(
+      new Set(
+        variants
+          .map((v) => v.filter((c) => !commonKeys.has(c.key)).map(componentName).join(" + "))
+          .filter(Boolean)
+      )
+    );
+
+    const commonText = common.map(componentName).join(", ");
+    if (diffTexts.length <= 1) {
+      return [commonText, ...diffTexts].filter(Boolean).join(", ");
+    }
+    return commonText ? `${commonText}, ${diffTexts.join("/")}` : diffTexts.join("/");
+  }
+
+  // Для подсветки трея при неверном ответе — выбираем вариант рецепта,
+  // с которым выбор игрока совпадает больше всего.
+  function bestMatchingVariant(variants, selected) {
+    let best = variants[0];
+    let bestScore = -1;
+    for (const variant of variants) {
+      const need = new Map(variant.map((c) => [c.key, c.count]));
+      let score = 0;
+      for (const [k, n] of need.entries()) {
+        if (selected.get(k) === n) score++;
+      }
+      if (score > bestScore) {
+        bestScore = score;
+        best = variant;
+      }
+    }
+    return best;
   }
 
   function checkAnswer() {
     if (state.locked || !state.current) return;
     state.locked = true;
 
-    const need = new Map(state.current.components.map((c) => [c.key, c.count]));
-    let correct = need.size === state.selected.size;
-    if (correct) {
-      for (const [k, n] of need.entries()) {
-        if (state.selected.get(k) !== n) {
-          correct = false;
-          break;
-        }
-      }
-    }
+    const variants = answerVariants(state.current);
+    const correct = variants.some((v) => variantMatchesSelection(v, state.selected));
 
+    const need = new Map(
+      (correct
+        ? variants.find((v) => variantMatchesSelection(v, state.selected))
+        : bestMatchingVariant(variants, state.selected)
+      ).map((c) => [c.key, c.count])
+    );
     markTrayCorrectness(need);
 
     if (correct) {
@@ -280,13 +451,7 @@
       els.feedback.className = "feedback ok";
     } else {
       state.score = 0;
-      const correctNames = state.current.components
-        .map((c) => {
-          const it = poolByKey(c.key);
-          const name = it ? it.name : c.key;
-          return c.count > 1 ? `${name} x${c.count}` : name;
-        })
-        .join(", ");
+      const correctNames = describeVariants(variants);
       els.feedback.textContent = `Неверно. Правильный рецепт: ${correctNames}`;
       els.feedback.className = "feedback bad";
     }
@@ -320,12 +485,8 @@
   });
   els.search.addEventListener("input", renderPool);
   els.recipeBtn.addEventListener("click", () => {
-    if (state.locked) return;
-    const c = state.selected.get(RECIPE_KEY) || 0;
-    state.selected.set(RECIPE_KEY, c + 1);
-    renderPool();
-    renderTray();
-    saveSession();
+    const recipeItem = poolByKey(RECIPE_KEY);
+    if (recipeItem) handlePoolItemClick(recipeItem, els.recipeBtn, 1);
   });
   els.menuBtn.addEventListener("click", showMenu);
   document.querySelectorAll(".mode-card").forEach((card) => {
@@ -369,7 +530,11 @@
       els.feedback.className = session.feedbackClass || "feedback";
       els.checkBtn.hidden = true;
       els.nextBtn.hidden = false;
-      const need = new Map(state.current.components.map((c) => [c.key, c.count]));
+      const variants = answerVariants(state.current);
+      const matched = variants.find((v) => variantMatchesSelection(v, state.selected));
+      const need = new Map(
+        (matched || bestMatchingVariant(variants, state.selected)).map((c) => [c.key, c.count])
+      );
       markTrayCorrectness(need);
     } else {
       els.feedback.textContent = "";

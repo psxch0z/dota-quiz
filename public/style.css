@@ -318,7 +318,34 @@ body{
 }
 .tray-chip:hover .remove-hint{ opacity:1; }
 
+.tray-placeholder{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border: 1px dashed var(--border);
+  background: var(--bg2);
+  color: var(--text-dim);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: default;
+}
+
+.tray-warning{
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--red);
+}
+
 .tray-actions{ display:flex; gap:10px; margin-top:14px; flex-wrap:wrap; }
+
+@keyframes shake-item{
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60% { transform: translateX(4px); }
+}
+.pool-item.shake{ animation: shake-item 0.4s; border-color: var(--red); }
 
 .btn{
   padding: 10px 18px;
@@ -400,26 +427,6 @@ body{
   border-radius: 0 0 0 4px;
 }
 .pool-item.selected{ border-color: var(--gold-bright); box-shadow: 0 0 0 1px var(--gold-bright) inset; }
-
-.pool-item .tooltip{
-  position:absolute;
-  bottom: 100%;
-  left:50%;
-  transform: translateX(-50%);
-  background: #000;
-  color: var(--text);
-  font-size: 11px;
-  padding: 3px 6px;
-  border-radius: 4px;
-  white-space: nowrap;
-  opacity:0;
-  pointer-events:none;
-  transition: opacity 0.1s;
-  margin-bottom: 6px;
-  z-index: 5;
-  border: 1px solid var(--border);
-}
-.pool-item:hover .tooltip{ opacity:1; }
 
 .recipe-btn{
   flex: none;

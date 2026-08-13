@@ -3,8 +3,6 @@ import os
 import psycopg
 from psycopg.rows import dict_row
 
-DATABASE_URL = os.environ.get("DATABASE_URL", "")
-
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS users (
     steamid TEXT PRIMARY KEY,
@@ -24,7 +22,8 @@ CREATE TABLE IF NOT EXISTS scores (
 
 
 def get_connection():
-    return psycopg.connect(DATABASE_URL, row_factory=dict_row)
+    database_url = os.environ.get("DATABASE_URL", "")
+    return psycopg.connect(database_url, row_factory=dict_row, connect_timeout=10)
 
 
 def init_db():

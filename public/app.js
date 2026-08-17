@@ -39,7 +39,6 @@
   const state = {
     pool: [],
     recipes: [],
-    remaining: [],
     current: null,
     mode: "hard", // "easy" | "hard"
     easyOptions: [], // keys, only used in easy mode
@@ -50,6 +49,30 @@
     user: null,
     lbMode: "easy",
   };
+
+  // Счёт и правильность ответа — не клиентская самооценка. Раунд ведёт
+  // сервер (подписанная сессия), клиент только запрашивает вопрос и
+  // присылает выбор компонентов на проверку — см. server/app.py.
+  async function apiPost(url, body) {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body || {}),
+    });
+    let data = {};
+    try {
+      data = await res.json();
+    } catch {
+      data = {};
+    }
+    if (!res.ok) throw new Error(data.error || `http_${res.status}`);
+    return data;
+  }
+
+  async function apiGet(url) {
+    const res = await fetch(url, { cache: "no-store" });
+    return res.json();
+  }
 
   els.best.textContent = state.best;
 
@@ -68,10 +91,6 @@
       [a[i], a[j]] = [a[j], a[i]];
     }
     return a;
-  }
-
-  function refillRemaining() {
-    state.remaining = shuffle(state.recipes);
   }
 
   function answerVariants(recipe) {
@@ -116,17 +135,16 @@
     });
   }
 
+  // Здесь хранится только косметика UI (что нажато, текст фидбека) — для
+  // мгновенного восстановления экрана при перезагрузке. Источник истины по
+  // очкам и текущему вопросу — серверная сессия (см. tryResume).
   function saveSession() {
     localStorage.setItem(
       STORAGE_KEY,
       JSON.stringify({
-        mode: state.mode,
-        score: state.score,
         currentKey: state.current ? state.current.key : null,
         easyOptions: state.easyOptions,
-        remainingKeys: state.remaining.map((r) => r.key),
         selected: Array.from(state.selected.entries()),
-        locked: state.locked,
         feedbackText: els.feedback.textContent,
         feedbackClass: els.feedback.className,
       })
@@ -164,18 +182,37 @@
     els.targetCost.textContent = item.cost ? `Цена сборки: ${item.cost}` : "";
   }
 
-  function startMode(mode) {
+  async function startMode(mode) {
     state.mode = mode;
-    state.score = 0;
     els.search.hidden = mode === "easy";
-    refillRemaining();
-    nextQuestion();
     showGame();
+    els.targetName.textContent = "Загрузка...";
+    els.checkBtn.disabled = true;
+    try {
+      const data = await apiPost("/api/round/start", { mode });
+      applyRoundQuestion(data.recipe_key, data.score);
+    } catch (err) {
+      els.targetName.textContent = "Не удалось начать раунд";
+      console.error(err);
+    }
   }
 
-  function nextQuestion() {
+  // Показывает вопрос, который выдал сервер (recipe_key), и синхронизирует
+  // локальный счёт с тем, что реально записано в серверной сессии.
+  function applyRoundQuestion(recipeKey, score) {
+    const recipe = recipeByKey(recipeKey);
+    if (!recipe) return false;
+
     state.locked = false;
     state.selected = new Map();
+    state.current = recipe;
+    state.score = score;
+    if (state.score > state.best) {
+      state.best = state.score;
+      localStorage.setItem("dq_best", String(state.best));
+    }
+    state.easyOptions = state.mode === "easy" ? buildEasyOptions(recipe) : [];
+
     els.feedback.textContent = "";
     els.feedback.className = "feedback";
     els.nextBtn.hidden = true;
@@ -184,14 +221,24 @@
     els.score.textContent = state.score;
     els.best.textContent = state.best;
 
-    if (state.remaining.length === 0) refillRemaining();
-    state.current = state.remaining.pop();
-    state.easyOptions = state.mode === "easy" ? buildEasyOptions(state.current) : [];
-
-    showTarget(state.current);
+    showTarget(recipe);
     renderPool();
     renderTray();
     saveSession();
+    return true;
+  }
+
+  async function nextQuestion() {
+    els.nextBtn.disabled = true;
+    try {
+      const data = await apiPost("/api/round/next", {});
+      applyRoundQuestion(data.recipe_key, data.score);
+    } catch (err) {
+      console.error(err);
+      showWarning("Не удалось загрузить следующий вопрос");
+    } finally {
+      els.nextBtn.disabled = false;
+    }
   }
 
   function shakeElement(el) {
@@ -425,32 +472,47 @@
     return best;
   }
 
-  function checkAnswer() {
+  // Правильность ответа и очки решает сервер (POST /api/round/answer) — он
+  // сверяет выбор с собственной копией рецептов и сам пишет в лидерборд.
+  // Локально мы только красиво подсвечиваем трей и текст фидбека.
+  async function checkAnswer() {
     if (state.locked || !state.current) return;
     state.locked = true;
+    els.checkBtn.disabled = true;
+
+    const selectedObj = {};
+    for (const [key, count] of state.selected.entries()) selectedObj[key] = count;
+
+    let result;
+    try {
+      result = await apiPost("/api/round/answer", { selected: selectedObj });
+    } catch (err) {
+      state.locked = false;
+      els.checkBtn.disabled = false;
+      console.error(err);
+      showWarning("Не удалось отправить ответ — попробуй ещё раз");
+      return;
+    }
 
     const variants = answerVariants(state.current);
-    const correct = variants.some((v) => variantMatchesSelection(v, state.selected));
-
     const need = new Map(
-      (correct
+      (result.correct
         ? variants.find((v) => variantMatchesSelection(v, state.selected))
         : bestMatchingVariant(variants, state.selected)
       ).map((c) => [c.key, c.count])
     );
     markTrayCorrectness(need);
 
-    if (correct) {
-      state.score += 10;
-      if (state.score > state.best) {
-        state.best = state.score;
-        localStorage.setItem("dq_best", String(state.best));
-      }
-      submitScore(state.mode, state.score);
+    state.score = result.score;
+    if (state.score > state.best) {
+      state.best = state.score;
+      localStorage.setItem("dq_best", String(state.best));
+    }
+
+    if (result.correct) {
       els.feedback.textContent = "Верно! Точный рецепт.";
       els.feedback.className = "feedback ok";
     } else {
-      state.score = 0;
       const correctNames = describeVariants(variants);
       els.feedback.textContent = `Неверно. Правильный рецепт: ${correctNames}`;
       els.feedback.className = "feedback bad";
@@ -493,23 +555,44 @@
     card.addEventListener("click", () => startMode(card.dataset.mode));
   });
 
-  function restoreSession(session) {
-    const current = recipeByKey(session.currentKey);
-    if (!current) return false;
-
-    state.mode = session.mode === "easy" ? "easy" : "hard";
-    state.current = current;
-    state.easyOptions = Array.isArray(session.easyOptions) ? session.easyOptions : [];
-    if (state.mode === "easy" && state.easyOptions.includes(current.key)) {
-      // self-heal sessions saved before decoys excluded the target itself
-      state.easyOptions = buildEasyOptions(current);
+  // Источник истины при восстановлении после перезагрузки — серверная
+  // сессия (GET /api/round/state): она знает актуальный счёт и текущий
+  // рецепт. localStorage используется только для косметики (что было
+  // нажато, текст фидбека), и то лишь если совпадает с тем же рецептом.
+  async function tryResume() {
+    const screen = localStorage.getItem(SCREEN_KEY);
+    if (!(isPageReload() && screen === "game")) {
+      showMenu();
+      return;
     }
-    state.remaining = session.remainingKeys
-      .map((k) => recipeByKey(k))
-      .filter(Boolean);
-    state.selected = new Map(session.selected || []);
-    state.score = Number(session.score) || 0;
-    state.locked = Boolean(session.locked);
+
+    let roundState;
+    try {
+      roundState = await apiGet("/api/round/state");
+    } catch {
+      roundState = { active: false };
+    }
+
+    const current = roundState.active ? recipeByKey(roundState.recipe_key) : null;
+    if (!current) {
+      showMenu();
+      return;
+    }
+
+    const local = loadSession();
+    const localMatches = Boolean(local && local.currentKey === roundState.recipe_key);
+
+    state.mode = roundState.mode === "easy" ? "easy" : "hard";
+    state.current = current;
+    state.score = Number(roundState.score) || 0;
+    state.locked = Boolean(roundState.answered);
+    state.easyOptions =
+      localMatches && Array.isArray(local.easyOptions) && local.easyOptions.length
+        ? local.easyOptions
+        : state.mode === "easy"
+        ? buildEasyOptions(current)
+        : [];
+    state.selected = new Map(localMatches ? local.selected || [] : []);
 
     if (state.score > state.best) {
       state.best = state.score;
@@ -526,11 +609,18 @@
     els.best.textContent = state.best;
 
     if (state.locked) {
-      els.feedback.textContent = session.feedbackText || "";
-      els.feedback.className = session.feedbackClass || "feedback";
+      const variants = answerVariants(state.current);
+      if (localMatches && local.feedbackText) {
+        els.feedback.textContent = local.feedbackText;
+        els.feedback.className = local.feedbackClass || "feedback";
+      } else {
+        els.feedback.textContent = roundState.last_correct
+          ? "Верно! Точный рецепт."
+          : `Неверно. Правильный рецепт: ${describeVariants(variants)}`;
+        els.feedback.className = "feedback " + (roundState.last_correct ? "ok" : "bad");
+      }
       els.checkBtn.hidden = true;
       els.nextBtn.hidden = false;
-      const variants = answerVariants(state.current);
       const matched = variants.find((v) => variantMatchesSelection(v, state.selected));
       const need = new Map(
         (matched || bestMatchingVariant(variants, state.selected)).map((c) => [c.key, c.count])
@@ -544,7 +634,6 @@
     }
 
     showGame();
-    return true;
   }
 
   function updateAuthUI() {
@@ -571,17 +660,6 @@
         state.user = null;
         updateAuthUI();
       });
-  }
-
-  function submitScore(mode, score) {
-    if (!state.user) return;
-    fetch("/api/score", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ mode, score }),
-    }).catch(() => {
-      // тихо игнорируем — локальный прогресс всё равно сохранён
-    });
   }
 
   function loadLeaderboard(mode) {
@@ -651,13 +729,7 @@
     .then((data) => {
       state.pool = data.pool;
       state.recipes = data.recipes;
-
-      const session = loadSession();
-      const screen = localStorage.getItem(SCREEN_KEY);
-      const canResume = isPageReload() && screen === "game" && session;
-      if (!canResume || !restoreSession(session)) {
-        showMenu();
-      }
+      tryResume();
     })
     .catch((err) => {
       els.targetName.textContent = "Не удалось загрузить данные";
